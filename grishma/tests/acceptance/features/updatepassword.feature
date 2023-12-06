@@ -24,11 +24,9 @@ And the user has already logged in
 When user updates password
 Then user should be able to know that password can't be blank
 
+
 Scenario: user entered password which contains special characters only on new password and confirm new password field
 Given the user has already logged in
 When user updates password
 Then the password should not be updated
 And user should be able to know that password cannot be only special characters
-
-
-
