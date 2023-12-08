@@ -5,7 +5,7 @@ So I can protect my files
 
 
 Scenario: user entered same password on new password and confirm new password field
-Given 
+Given the user has signed up
 And the user has already logged in
 When user updates password
 Then the password should be updated
