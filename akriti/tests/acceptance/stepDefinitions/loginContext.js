@@ -1,34 +1,30 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-const usernameselector = '//input[@type= "text"]';
-const passnameselector = '//input[@type = "password"]';
+const {Given, When, Then} = require('@cucumber/cucumber')
+const { expect } = require("@playwright/test")
 
-const loginButton = '//input[@type ="submit"]';
+const usernameSelector = '//input[@placeholder="Username"]'
+const passwordSelector = '//input[@placeholder="Password"]'
+const loginButtonSelector = '//input[@type="submit"]'
+const wrong = '//div[@class="wrong"]'; // Replace this with the appropriate selector for the error message element
 
+const url ='http://localhost:8080/login'
 
-//launch url
-const url ="http:localhost:8080/login"
-
-Given("the user has browsed to the login page", async function () {
+Given('the user has browsed to the login page', async function () {
   await page.goto(url)
 });
 
-When(
-  "user logs in with username {string} and password {string}",
-  async function (username, password) {
-    
-{
-  await page.fill( usernameselector, username)
-  await page.fill( passnameselector, password)
-  await page.click( loginButton)
-
-
-}
-    // Write code here that turns the phrase above into concrete actions
-  }
-);
-
-Then("user should redirect to the homepage", function () {
-  // Write code here that turns the phrase above into concrete actions
-  return "pending";
+When('user logs in with username {string} and password {string}', async function (username, password) {
+  await page.fill(usernameSelector, username)
+  await page.fill(passwordSelector, password)
+  await page.click(loginButtonSelector)
 });
+
+Then('user should redirect to the homepage', async function () {
+  const homepage = 'http://localhost:8080/files/'
+  await expect(page).toHaveURL(homepage)
+});
+
+Then('user should be able to see the {string}', async function (expectedErrorMessage) {
+  const value = await page.innerText(selector);
+
+})
 
