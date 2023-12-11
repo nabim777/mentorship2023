@@ -7,6 +7,7 @@ const loginButtonSelector = '//input[@type="submit"]'
 const wrong = '//div[@class="wrong"]'; // Replace this with the appropriate selector for the error message element
 
 const url ='http://localhost:8080/login'
+const url1 ='http://localhost:8080/files'
 
 Given('the user has browsed to the login page', async function () {
   await page.goto(url)
