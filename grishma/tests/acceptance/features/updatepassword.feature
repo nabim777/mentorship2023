@@ -5,8 +5,8 @@ So I can protect my files
 
 
 Scenario: user entered same password on new password and confirm new password field
-Given the user has signed up
-And the user has already logged in
+Given the user has already logged in
+And the user has browsed to the login page
 When user updates password
 Then the password should be updated
 
