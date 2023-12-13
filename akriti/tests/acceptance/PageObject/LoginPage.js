@@ -10,6 +10,10 @@ class LoginPage {
     this.usernameSelector = '//input[@placeholder="Username"]'; 
     this.passwordSelector = '//input[@placeholder="Password"]';
     this.loginButtonSelector = '//input[@type="submit"]';
+    this.wrongMessageSelector = '//div[@class="wrong"]';
+    
+    //div[@class="wrong"]
+
 
   }
 

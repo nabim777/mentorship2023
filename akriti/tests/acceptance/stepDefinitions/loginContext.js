@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect, test, _android } = require('@playwright/test');
+const assert = require("assert")
 
 
 // importing the file: LoginPage.js
@@ -21,7 +22,13 @@ Then('user should redirect to the homepage', async function () {
   await expect(page).toHaveURL(loginPage.homePageUrl);
 });
 
-Then('User should be able to see the "<message>"', async function () {
-  await expect(page).toHaveURL(loginPage.homePageUrl);
+
+Then('user should be able to see the {string} message', async function  (expectMessage) {
+const actualMessage = await page.locator(loginPage.wrongMessageSelector).textContent()
+assert.equal(
+  actualMessage, 
+  expectMessage, 
+  `Expected message to be "${expectMessage}" but receive "${actualMessage}"`
+)
 });
 
