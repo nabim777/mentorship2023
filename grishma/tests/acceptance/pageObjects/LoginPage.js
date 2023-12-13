@@ -8,15 +8,15 @@ class LoginPage{
         this.messageSelector = '//div[@class="wrong"]'
         
         //launch url
-        this.url ='http://localhost:8080/login'
+        this.loginurl ='http://localhost:8080/login'
         this.homePageUrl ='http://localhost:8080/files/'
     }
 
     async gotoLoginPage(){
-        await page.goto(this.url)
+        await page.goto(this.loginurl)
     }
 
-    async logintoHomePage(username,password){
+    async login(username,password){
         await page.fill(this.usernameSelector, username)
         await page.fill(this.passwordSelector, password)
         await page.click(this.loginButtonSelector)
