@@ -8,8 +8,8 @@ Background:
 
 
   Scenario: User Login with correct username and valid password
-    When user logs in with username "admin" and password "admin"
-    Then user should redirect to the homepage
+  When user logs in with username "admin" and password "admin"
+  Then user should redirect to the homepage
 
 
   Scenario Outline: login with invalid  credendial
