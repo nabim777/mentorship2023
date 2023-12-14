@@ -12,6 +12,10 @@ Given('the user has browsed to the login page', async function () {
   await expect(page).toHaveURL(loginPage.loginurl)
 });
 
+Given('the user has logged in with username {string} and password {string} using webUI', async function (username, password) {
+  await loginPage.login(username,password)
+});
+
 When('user logs in with username {string} and password {string} using webUI', async function (username, password) {
   await loginPage.login(username,password)
 });
