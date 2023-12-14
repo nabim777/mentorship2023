@@ -8,7 +8,7 @@ Background:
 
 
   Scenario: User Login with correct username and valid password
-  When user logs in with username "admin" and password "admin"
+  When user logs in with username "admin123" and password "12345"
   Then user should redirect to the homepage
 
 

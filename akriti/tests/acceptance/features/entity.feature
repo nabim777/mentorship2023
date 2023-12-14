@@ -10,6 +10,6 @@ So I can manage the files and folders
 
     Scenario: user create a file
     Given the user has browsed to the login page 
-    And user logged in with username "admin123" and password "12345"
+    And user has logged in with username "admin123" and password "12345"
     When user creates a file "demo.txt" with content "hello world !!"
     Then user should see the "demo.txt" file
