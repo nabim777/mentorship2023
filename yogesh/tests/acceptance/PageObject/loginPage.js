@@ -35,7 +35,21 @@ class LoginPage {
         const errorMessage = await page.innerHTML(this.wrongCredentialsDivSelector)
         assert.equal(errorMessage, expectedMessage, `Expected message string "${expectedMessage}" but recieved message "${errorMessage}" from UI`)
     }
+    async loginBasedOnRole(role) {
+        this.navigateToLoginPage()
+        switch (role) {
+            case 'admin':
+                await this.fillUsernameAndPassword('admin', 'admin')
+                break;
+            case 'user':
+                await this.fillUsernameAndPassword('user', 'user')
+                break;
+            default:
+                throw new Error(`Invalid role ${role} passed`)
+        }
+        await this.clickLoginButton()
+    }
 }
 
-const loginPage = new LoginPage()
-exports.loginPage = loginPage
+const login = new LoginPage()
+exports.login = login
