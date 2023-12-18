@@ -1,4 +1,3 @@
-const { expect } = require("playwright/test")
 const util = require('util');
 
 class EntityPage {
@@ -12,9 +11,12 @@ class EntityPage {
         this.textFieldSelector='//textarea[@class="ace_text-input"]'
         this.saveIconSelector='//button[@title="Save"]'
         this.closeIconSelector='//button[@title="Close"]'
-        this.checkMadeFileSelector='//div[@aria-label="string"]'
         this.fileNameSelector='//div[@aria-label="%s"]'
+        this.renameIconSelector='//button[@title="Rename"]'
+        this.renameButtonSelector='//button[@type="submit"]'
+        
     }
+
     async createFile(fileName, content) {
         await page.click(this.newFileSelector)
         await page.fill(this.textButtonSelector, fileName)
@@ -24,11 +26,11 @@ class EntityPage {
         await page.click(this.closeIconSelector)
     }
 
-    async shouldSeeFileInWebUI(fileName){
-        const realSelector = util.format(this.fileNameSelector, fileName)
-        const locator = page.locator(realSelector);
-        await expect(locator).toBeVisible()
-    }
-
+    async renameFile(oldFileName, newFileName){
+        await page.click(util.format(this.fileNameSelector, oldFileName))
+        await page.click(this.renameIconSelector)
+        await page.fill(this.textButtonSelector, newFileName)
+        await page.click(this.renameButtonSelector)
+}
 }
 module.exports = EntityPage
