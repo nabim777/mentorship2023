@@ -6,6 +6,6 @@
     "playwright": "^1.40.1"
   },
   "scripts": {
-    "test:e2e": "cucumber-js --require cucumber.conf.js --require acceptance/stepDefinitions/ --format @cucumber/pretty-formatter" 
+    "test:e2e": "cucumber-js --require cucumber.conf.js --require acceptance/stepDefinitions/**/*.js --format @cucumber/pretty-formatter"
   }
 }

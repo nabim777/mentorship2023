@@ -1,24 +1,16 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
-const { expect } = require('@playwright/test');
+const {Given, When, Then} = require('@cucumber/cucumber')
+const { expect } = require("@playwright/test")
 
-const assert = require("assert")
-const EntityPage =require("../PageObject/EntityPage.js")
-const entityPage = new EntityPage;
-
-
+//import 
+const EntityPage = require('../PageObjects/EntityPage.js')
+const entityPage = new EntityPage
 
 
-
-When('user creates a file {string} with content {string}', async function (string, string2) {
-  await entityPage.createFile(string)
+  When('the user creates a new file {string} with content {string}', async function (fileName, content) {
+    await entityPage.createFile(fileName, content)
   });
 
 
-  Then('user should see the {string} file', function (string) {
-    
-    return 'pending';
+  Then('the user should be able to see {string} file',async function (fileName) {
+await entityPage.shouldSeeFileInWebUI(fileName)
   });
-
-
-
-
