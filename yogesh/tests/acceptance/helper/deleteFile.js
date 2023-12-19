@@ -23,7 +23,11 @@ async function deleteFile(filename) {
                 "X-Auth": await getXauthToken()
             }
         })
-        return res.data
+        if (res.status == 200) {
+            //remove the deleted file from filesToDelete array
+            const fileIndex = filesToDelete.findIndex((file) => file == filename);
+            filesToDelete.splice(fileIndex, 1)
+        }
     } catch (error) {
         console.error("Error:", error);
     }
@@ -40,7 +44,9 @@ function swapFileOnRename(oldfileName, newfileName) {
     filesToDelete[fileToSwapIndex] = newfileName;
 }
 
-exports.deleteFile = deleteFile
-exports.cleanUpTempFiles = cleanUpTempFiles
-exports.filesToDelete = filesToDelete
-exports.swapFileOnRename = swapFileOnRename
+module.exports ={
+    deleteFile,
+    cleanUpTempFiles,
+    filesToDelete,
+    swapFileOnRename
+}

@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@cucumber/cucumber')
 const { expect } = require('@playwright/test');
 const assert = require('assert');
 
-const { login } = require('../PageObject/LoginPage');
+const { login } = require('../PageObject/loginPage');
 
 Given('user has browsed to the login page', async () => {
   await login.navigateToLoginPage()
@@ -19,5 +19,5 @@ Then('user should be navigated to homescreen', async function () {
 
 Then('user should see {string} message', async function (expectedMessage) {
   const errorMessage = await page.innerHTML(login.wrongCredentialsDivSelector)
-  assert.equal(errorMessage, expectedMessage, `Expected message string "${expectedMessage}" but recieved message "${errorMessage}" from UI`)
+  assert.equal(errorMessage, expectedMessage, `Expected message string "${expectedMessage}" but received message "${errorMessage}" from UI`)
 });
