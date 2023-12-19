@@ -29,3 +29,29 @@ jobs:
         run: |
           node --version
           go version
+
+      - name: set up the file application
+        run: |
+          git clone https://github.com/filebrowser/filebrowser
+          ls
+          cd filebrowser
+          cd frontend
+          npm install
+          npm run build
+          cd ..
+          go mod download
+          go run main.go &
+
+      - name: wait file browser
+        run: |
+          sudo apt-get install wait-for-it -y
+          wait-for-it -h localhost -p 8080 -t 10
+
+      - name: install dependencies
+        run: |
+          npm install
+
+      - name: run web-ui tests
+        run: |
+          npx playwright install
+          npm run test:e2e **/tests
