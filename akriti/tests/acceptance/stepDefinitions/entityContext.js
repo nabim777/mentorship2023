@@ -1,7 +1,7 @@
 const {Given, When, Then} = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test")
 
-//import 
+//import linking the entityPage in the entityContext .js 
 const EntityPage = require('../PageObjects/EntityPage.js')
 const entityPage = new EntityPage
 
@@ -12,5 +12,5 @@ const entityPage = new EntityPage
 
 
   Then('the user should be able to see {string} file',async function (fileName) {
-await entityPage.shouldSeeFileInWebUI(fileName)
+    await entityPage.shouldSeeFileInWebUI(fileName)
   });
