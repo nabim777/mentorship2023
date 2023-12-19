@@ -14,7 +14,7 @@ Given('the user has logged in with username {string} and password {string} using
   await loginPage.logintoHomePage(username, password)
 });
 
-When('the user creates a  in with username {string} and password {string}', async function (username, password) {
+When('user logs in with username {string} and password {string}', async function (username, password) {
   await loginPage.logintoHomePage(username, password)
 });
 
