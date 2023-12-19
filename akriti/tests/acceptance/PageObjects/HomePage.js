@@ -1,5 +1,5 @@
 const { expect } = require("playwright/test")
-const util = require('util');
+
 
 class EntityPage {
     constructor() {
@@ -27,10 +27,7 @@ class EntityPage {
         await page.click(this.closeIconSelector)
     }
 
-    async shouldSeeFileInWebUI(fileName){
-        const locator = page.locator(util.format(this.fileNameSelector, fileName));
-        await expect(locator).toBeVisible()
-    }
+    
 
 }
 
