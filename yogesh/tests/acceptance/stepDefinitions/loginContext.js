@@ -1,17 +1,23 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
+const { expect } = require('@playwright/test');
+const assert = require('assert');
 
 const { login } = require('../PageObject/loginPage');
 
-Given('the user has browsed to the login page', async () => {
+Given('user has browsed to the login page', async () => {
   await login.navigateToLoginPage()
-  await login.verifyIfInLoginPage()
+  await expect(page).toHaveURL(login.baseURL + 'login')
 });
 
 When('user logs in with username as {string} and password as {string}', async (username, password) => {
-  await login.fillUsernameAndPassword(username, password)
-  await login.clickLoginButton()
+  await login.loginWithUsernameAndPassword(username,password)
 });
 
-Then('user should be navigated to homescreen', async () => await login.verifyIfInFilesPage());
+Then('user should be navigated to homescreen', async function () {
+  await expect(page).toHaveURL(login.baseURL + "files/");
+});
 
-Then('user should see {string} message', async (expectedMessage) => await login.validateErrorMessage(expectedMessage));
+Then('user should see {string} message', async function (expectedMessage) {
+  const errorMessage = await page.innerHTML(login.wrongCredentialsDivSelector)
+  assert.equal(errorMessage, expectedMessage, `Expected message string "${expectedMessage}" but recieved message "${errorMessage}" from UI`)
+});
