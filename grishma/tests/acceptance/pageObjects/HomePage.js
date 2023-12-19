@@ -1,10 +1,7 @@
 const util = require('util');
 
-class EntityPage {
+class HomePage {
     constructor() {
-
-        //define selectors
-        // this.newFolderSelector = '//button[@title="New folder"]'
         this.newFileSelector = '//button[@title="New file"]'
         this.textButtonSelector = '//input[@class="input input--block"]'
         this.createButtonSelector='//button[@title="Create"]'
@@ -14,7 +11,6 @@ class EntityPage {
         this.fileNameSelector='//div[@aria-label="%s"]'
         this.renameIconSelector='//button[@title="Rename"]'
         this.renameButtonSelector='//button[@type="submit"]'
-        
     }
 
     async createFile(fileName, content) {
@@ -32,5 +28,6 @@ class EntityPage {
         await page.fill(this.textButtonSelector, newFileName)
         await page.click(this.renameButtonSelector)
 }
+
 }
-module.exports = EntityPage
+module.exports = HomePage
