@@ -1,19 +1,20 @@
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
+const { cleanUpTempFiles } = require('./acceptance/helper/deleteFile')
 
-setDefaultTimeout(60000)
+setDefaultTimeout(10000)
 
 // launch the browser
 BeforeAll(async function () {
   global.browser = await chromium.launch({
-      headless: false,
-      slowMo: 1000,
+    headless: false,
+    // slowMo: 1000,
   });
 });
 
 // close the browser
 AfterAll(async function () {
-   await global.browser.close();
+  await global.browser.close();
 });
 
 // Create a new browser context and page per scenario
@@ -26,4 +27,5 @@ Before(async function () {
 After(async function () {
   await global.page.close();
   await global.context.close();
+  await cleanUpTempFiles();
 });
