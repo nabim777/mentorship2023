@@ -1,5 +1,4 @@
-const { expect } = require("@playwright/test")
-
+const { filesToDelete } = require('../helper/deleteFile');
 class HomePage {
     constructor() {
         this.newFileSelector = "//button[@title='New file']"
@@ -17,11 +16,10 @@ class HomePage {
         await page.click(this.newFileSelector)
         await page.fill(this.textFieldSelector, filename)
         await page.click(this.createButtonSelector)
+        filesToDelete.push(filename)
         await page.fill(this.inputSelector,fileContent)
         await page.click(this.saveButtonSelector)
         await page.click(this.closeButtonSelector)
-        //await page.waitForSelector(commonLocator);
     }
-
 }
 module.exports = HomePage

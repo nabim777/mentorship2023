@@ -30,5 +30,3 @@ Then('user should see {string} message', async function (expectedMessage) {
     )
 });
 
-
-
