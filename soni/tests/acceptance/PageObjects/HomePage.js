@@ -1,4 +1,4 @@
-const { filesToDelete } = require('../helper/deleteFile');
+const { filesToDelete } = require('./../../../../testHelper/helper');
 class HomePage {
     constructor() {
         this.newFileSelector = "//button[@title='New file']"
@@ -16,10 +16,10 @@ class HomePage {
         await page.click(this.newFileSelector)
         await page.fill(this.textFieldSelector, filename)
         await page.click(this.createButtonSelector)
-        filesToDelete.push(filename)
         await page.fill(this.inputSelector,fileContent)
         await page.click(this.saveButtonSelector)
         await page.click(this.closeButtonSelector)
+        filesToDelete.push(filename)
     }
 }
 module.exports = HomePage
