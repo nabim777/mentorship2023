@@ -1,6 +1,7 @@
 
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
+const { deleteFile } = require('./acceptance/helper/deleteFile')
 
 setDefaultTimeout(60000)
 
@@ -27,4 +28,5 @@ Before(async function () {
 After(async function () {
   await global.page.close();
   await global.context.close();
+  await deleteFile();
 });
