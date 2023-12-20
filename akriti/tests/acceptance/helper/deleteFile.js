@@ -29,18 +29,21 @@ async function deleteFile(filename) {
     }
 
 }
+(async ()=>{
+    await deleteFile("Akrity")
+})()
 
-async function cleanUpTempFiles() {
-    for (let i = 0; i < filesToDelete.length; i++) {
-        await deleteFile(filesToDelete[i])
-    }
-}
-function swapFileOnRename(oldfileName, newfileName) {
-    const fileToSwapIndex = filesToDelete.findIndex((file) => file == oldfileName);
-    filesToDelete[fileToSwapIndex] = newfileName;
-}
+// async function cleanUpTempFiles() {
+//     for (let i = 0; i < filesToDelete.length; i++) {
+//         await deleteFile(filesToDelete[i])
+//     }
+// }
+// function swapFileOnRename(oldfileName, newfileName) {
+//     const fileToSwapIndex = filesToDelete.findIndex((file) => file == oldfileName);
+//     filesToDelete[fileToSwapIndex] = newfileName;
+// }
 
-exports.deleteFile = deleteFile
-exports.cleanUpTempFiles = cleanUpTempFiles
-exports.filesToDelete = filesToDelete
-exports.swapFileOnRename = swapFileOnRename
+// exports.deleteFile = deleteFile
+// exports.cleanUpTempFiles = cleanUpTempFiles
+// exports.filesToDelete = filesToDelete
+// exports.swapFileOnRename = swapFileOnRename
