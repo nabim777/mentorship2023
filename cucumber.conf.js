@@ -6,6 +6,7 @@ const {
   setDefaultTimeout,
 } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
+const { cleanUpTempFiles } = require('./testHelper/helper.js')
 
 setDefaultTimeout(60000);
 BeforeAll(async function () {
@@ -26,4 +27,5 @@ Before(async function () {
 After(async function () {
   await global.page.close();
   await global.context.close();
+  await cleanUpTempFiles();
 });
