@@ -1,0 +1,50 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo code
+        uses: actions/checkout@v3
+
+      - name: set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: set up go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+
+      - name: set up the file application
+        run: |
+          git clone https://github.com/filebrowser/filebrowser
+          cd filebrowser/frontend
+          npm install
+          npm run build
+          cd ..
+          go mod download
+          go run main.go &
+
+      - name: wait file browser
+        run: |
+          sudo apt-get install wait-for-it -y
+          wait-for-it -h localhost -p 8080 -t 10
+
+      - name: install dependencies
+        run: |
+          npm install
+
+      - name: run web-ui tests
+        run: |
+          npx playwright install
+          npm run test:e2e **/tests
