@@ -1,5 +1,5 @@
 const util = require('util');
-const { filesToDelete, swapFileOnRename } = require('../helper/deleteFile');
+const { filesToDelete, swapFileOnRename } = require('../../../../testHelper/helper.js');
 
 class EntityPage{
     constructor(){
