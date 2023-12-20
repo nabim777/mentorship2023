@@ -33,6 +33,4 @@ class LoginPage {
 }
 
 const login = new LoginPage()
-module.exports = {
-    login
-}
+exports.login=login

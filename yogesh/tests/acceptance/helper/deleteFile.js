@@ -9,7 +9,7 @@ async function getXauthToken() {
         })
         return res.data
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error requesting acces token:", error);
     }
 
 }
@@ -29,7 +29,7 @@ async function deleteFile(filename) {
             filesToDelete.splice(fileIndex, 1)
         }
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error deleting file:", error);
     }
 
 }

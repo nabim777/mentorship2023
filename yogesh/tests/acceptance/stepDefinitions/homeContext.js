@@ -4,7 +4,7 @@ const util = require('util')
 const {expect} = require('@playwright/test')
 
 const { entity } = require("../PageObject/HomePage");
-const { login } = require('../PageObject/loginPage');
+const { login } = require('../PageObject/LoginPage');
 
 Given('user logs in as {string}', async function (role) {
     await login.loginBasedOnRole(role)

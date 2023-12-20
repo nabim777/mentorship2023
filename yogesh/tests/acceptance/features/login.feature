@@ -14,12 +14,12 @@ Scenario: user logs in with correct credentials
 
 Scenario Outline: user logs in with incorrect credentials
   When user logs in with username as "<username>" and password as "<password>"
-  Then user should see "<message>" message
+  Then user should see "Wrong credentials" message
 
   Examples: 
-    | username | password | message           |
-    | jankari  | admin    | Wrong credentials |
-    | admin    | jankari  | Wrong credentials |
-    |          | admin    | Wrong credentials |
-    | admin    |          | Wrong credentials |
-    |          |          | Wrong credentials |
+    | username | password |
+    | jankari  | admin    |
+    | admin    | jankari  |
+    |          | admin    |
+    | admin    |          |
+    |          |          |
