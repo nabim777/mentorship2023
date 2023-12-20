@@ -28,4 +28,6 @@ Before(async function () {
 After(async function () {
   await global.page.close();
   await global.context.close();
+  await cleanUpTempFiles();
+
 });
