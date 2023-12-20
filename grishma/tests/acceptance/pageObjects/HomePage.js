@@ -1,4 +1,5 @@
 const util = require('util');
+const { filesToDelete, swapFileOnRename } = require('../../../../testHelper/helper.js')
 
 class HomePage {
     constructor() {
@@ -20,9 +21,11 @@ class HomePage {
         await page.fill(this.textFieldSelector, content)
         await page.click(this.saveIconSelector)
         await page.click(this.closeIconSelector)
+        filesToDelete.push(fileName)
     }
 
     async renameFile(oldFileName, newFileName){
+        swapFileOnRename(oldFileName, newFileName);
         await page.click(util.format(this.fileNameSelector, oldFileName))
         await page.click(this.renameIconSelector)
         await page.fill(this.textButtonSelector, newFileName)
