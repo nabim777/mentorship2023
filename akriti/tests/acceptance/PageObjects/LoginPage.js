@@ -9,8 +9,7 @@ class LoginPage {
       //launch url
       this.serverUrl = 'http://localhost:8080/';
       this.loginUrl = this.serverUrl+"login";
-      // this.loginUrl = this.serverUrl+"login";
-       this.fileUrl = this.serverUrl+"files/"
+       this.homeUrl = this.serverUrl+"files/"
   }
 
   async gotoLoginPage() {
