@@ -2,8 +2,8 @@ const { Given, When, Then } = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test")
 const assert = require("assert")
 const LoginPage = require("../PageObjects/LoginPage.js")
-
 const loginPage = new LoginPage;
+
 
 Given('the user has browsed to the login page', async function () {
   await loginPage.gotoLoginPage();
@@ -19,7 +19,7 @@ When('user logs in with username {string} and password {string}', async function
 });
 
 Then('user should redirect to the homepage', async function () {
-  await expect(page).toHaveURL(loginPage.fileUrl)
+  await expect(page).toHaveURL(loginPage.homeUrl)
 });
 
 Then('user should be able to see the {string} message', async function (expectedMessage) {

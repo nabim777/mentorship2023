@@ -18,12 +18,11 @@ const filesToDelete = []
 
 async function deleteFile(filename) {
     try {
-        const res = await axios.delete(`http://localhost:8080/api/resources/${filename}`, {
+          await axios.delete(`http://localhost:8080/api/resources/${filename}`, {
             headers: {
                 "X-Auth": await getXauthToken()
             }
         })
-        return res.data
     } catch (error) {
         console.error("Error:", error);
     }
