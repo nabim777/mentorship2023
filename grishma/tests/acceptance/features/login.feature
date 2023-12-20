@@ -1,8 +1,7 @@
 Feature: login
-As a user
-I want to be able to log into my account
-So that I can have access to my files
-
+ As a user
+ I want to be able to log into my account
+ So that I can have access to my files
 
   Background: 
     Given the user has browsed to the login page

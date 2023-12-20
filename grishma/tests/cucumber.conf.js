@@ -3,6 +3,8 @@
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
 
+// import { deleteFile } from './deleteFile.js';
+
 setDefaultTimeout(60000)
 
 // launch the browser
@@ -28,4 +30,5 @@ Before(async function () {
 After(async function () {
   await global.page.close();
   await global.context.close();
+  // await cleanUpTempFiles();
 });

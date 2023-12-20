@@ -8,10 +8,12 @@ class LoginPage {
 
         //launch url
         this.baseUrl = 'http://localhost:8080/'
+        this.loginUrl = this.baseUrl+'login'
+        this.homePageUrl = this.baseUrl+'files/'
     }
 
     async gotoLoginPage() {
-        await page.goto(this.baseUrl+'login')
+        await page.goto(this.loginUrl)
     }
 
     async login(username, password) {

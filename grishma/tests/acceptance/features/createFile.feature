@@ -1,7 +1,7 @@
 Feature: create file
-As a user
-I want to create new files
-So that I can store my data
+ As a user
+ I want to create new files
+ So that I can store my data
 
 
 Scenario: user creates a new file
