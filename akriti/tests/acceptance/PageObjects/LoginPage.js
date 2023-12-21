@@ -20,6 +20,5 @@ class LoginPage {
       await page.fill(this.usernameSelector, username);
       await page.fill(this.passwordSelector, password);
       await page.click(this.loginButtonSelector);
-   }
-}
+   }}
 module.exports = LoginPage
