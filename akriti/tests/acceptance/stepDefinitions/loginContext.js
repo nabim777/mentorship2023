@@ -1,9 +1,9 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test")
 const assert = require("assert")
+
 const LoginPage = require("../PageObjects/LoginPage.js")
 const loginPage = new LoginPage;
-
 
 Given('the user has browsed to the login page', async function () {
   await loginPage.gotoLoginPage();
@@ -29,5 +29,3 @@ Then('user should be able to see the {string} message', async function (expected
   //equal , successful
   assert.equal(expectedMessage,actualMessage,`Expected message is ${expectedMessage} and actual message is ${actualMessage}.`)
 });
-
-
