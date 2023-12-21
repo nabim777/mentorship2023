@@ -1,6 +1,6 @@
 name: Main Workflow
 
-on:
+on: #event
   push:
     branches:
       - master
