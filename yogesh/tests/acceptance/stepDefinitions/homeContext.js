@@ -3,8 +3,11 @@ const assert = require('assert');
 const util = require('util')
 const {expect} = require('@playwright/test')
 
-const { homepage } = require("../PageObject/HomePage");
-const { login } = require('../PageObject/LoginPage');
+const { HomePage } = require("../PageObject/HomePage");
+const { LoginPage } = require('../PageObject/LoginPage');
+
+const login = new LoginPage()
+const homepage = new HomePage()
 
 Given('user has logged in as {string}', async function (role) {
     await login.loginBasedOnRole(role)

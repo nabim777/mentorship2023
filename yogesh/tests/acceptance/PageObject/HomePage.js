@@ -1,10 +1,10 @@
 const util = require('util');
-const { filesToDelete, swapFileOnRename } = require('../../../../testHelper/helper.js');
+const { filesToDelete } = require('../../../../testHelper/helper.js');
 
 class HomePage{
     
     constructor(){
-        this.dialogInputSelector = '//div[@class="card-content"]/input[@type="text"]';
+        this.dialogInputSelector = '//input[@class="input input--block"]';
         this.lastNavaigatedFolderSelector = '//div[@class="breadcrumbs"]/span[last()]/a'
         this.contentEditorSelector = '//textarea[@class="ace_text-input"]'
         this.editorContent = '//div[@class="ace_line"]'
@@ -32,12 +32,13 @@ class HomePage{
     }
 
     async renameFile(oldfileName,newfileName){
-        swapFileOnRename(oldfileName,newfileName);
         await page.click(util.format(this.fileSelector,oldfileName))
         await page.click(util.format(this.buttonSelector,'Rename'))
         await page.fill(this.dialogInputSelector, newfileName)
         await page.click(util.format(this.cardActionSelector,'Rename'))
+        const fileToSwapIndex = filesToDelete.findIndex((file) => file == oldfileName);
+        filesToDelete[fileToSwapIndex] = newfileName;
     }
 }
 
-exports.homepage = new HomePage()
+exports.HomePage = HomePage

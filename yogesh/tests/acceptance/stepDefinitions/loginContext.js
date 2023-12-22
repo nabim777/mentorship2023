@@ -2,7 +2,9 @@ const { Given, When, Then } = require('@cucumber/cucumber')
 const { expect } = require('@playwright/test');
 const assert = require('assert');
 
-const { login } = require('../PageObject/LoginPage');
+const { LoginPage } = require('../PageObject/LoginPage');
+
+const login = new LoginPage()
 
 Given('user has browsed to the login page', async () => {
   await login.navigateToLoginPage()
