@@ -1,0 +1,3 @@
+ #when user create a new users( jun kura test garney),
+# aru Given test
+#donot include the multiple data in data tables like admin tables
