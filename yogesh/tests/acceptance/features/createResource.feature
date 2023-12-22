@@ -4,7 +4,7 @@ Feature: Create a new resource
     So that I can organize my files
 
   Background: 
-    Given user logs in as "admin"
+    Given user has logged in as "admin"
     And user has navigated to the homepage
 
   Scenario: Create a new folder
