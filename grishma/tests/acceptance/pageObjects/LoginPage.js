@@ -5,6 +5,7 @@ class LoginPage {
         this.passwordSelector = '//input[@placeholder="Password"]'
         this.loginButtonSelector = '//input[@type="submit"]'
         this.messageSelector = '//div[@class="wrong"]'
+        this.logoutIconSelector='//button[@aria-label="Logout"]'
 
         //launch url
         this.baseUrl = 'http://localhost:8080/'

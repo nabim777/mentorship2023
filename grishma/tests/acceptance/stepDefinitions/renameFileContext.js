@@ -5,6 +5,6 @@ const util = require('util');
 const HomePage = require("../pageObjects/HomePage.js")
 const homePage = new HomePage
 
-When('the user renames a file {string} to {string}', async function (oldName, newName) {
+When('the admin renames a file {string} to {string}', async function (oldName, newName) {
   await homePage.renameFile(oldName, newName)
 });
