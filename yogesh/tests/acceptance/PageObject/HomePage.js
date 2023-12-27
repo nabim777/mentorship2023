@@ -39,6 +39,12 @@ class HomePage{
         const fileToSwapIndex = filesToDelete.findIndex((file) => file == oldfileName);
         filesToDelete[fileToSwapIndex] = newfileName;
     }
+
+    async deleteFile(filename){
+        await page.click(util.format(this.fileSelector,filename))
+        await page.click(util.format(this.buttonSelector,'Delete'))
+        await page.click(util.format(this.cardActionSelector,'Delete'))
+    }
 }
 
 exports.HomePage = HomePage

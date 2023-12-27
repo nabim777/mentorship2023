@@ -1,20 +1,20 @@
 Feature: Login
-As a user
+As an admin
 I want to login into the application
 So I can manage my files
 
 Background:
-  Given user has browsed to the login page
+  Given admin has browsed to the login page
 
 
-Scenario: user logs in with correct credentials
-  When user logs in with username as 'admin' and password as 'admin'
-  Then user should be navigated to homescreen
+Scenario: admin logs in with correct credentials
+  When admin logs in with username as 'admin' and password as 'admin'
+  Then admin should be navigated to homescreen
 
 
-Scenario Outline: user logs in with incorrect credentials
-  When user logs in with username as "<username>" and password as "<password>"
-  Then user should see "Wrong credentials" message
+Scenario Outline: admin logs in with incorrect credentials
+  When admin logs in with username as "<username>" and password as "<password>"
+  Then admin should see "Wrong credentials" message
   Examples: 
     | username | password |
     | jankari  | admin    |

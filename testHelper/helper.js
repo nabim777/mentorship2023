@@ -34,14 +34,29 @@ async function deleteFile(filename) {
 
 }
 
+async function createFile(filename) {
+    try {
+     const res=  await axios.post(`http://localhost:8080/api/resources/${filename}`,{}, {
+            headers: {
+                "X-Auth": await getXauthToken()
+            },
+
+        });
+    } catch (error) {
+        console.error("Error creating file:", error);
+    }
+
+}
+
 async function cleanUpTempFiles() {
     for (let i = 0; i < filesToDelete.length; i++) {
         await deleteFile(filesToDelete[i])
     }
 }
 
-module.exports ={
+module.exports = {
     deleteFile,
     cleanUpTempFiles,
     filesToDelete,
+    createFile
 }

@@ -6,20 +6,20 @@ const { LoginPage } = require('../PageObject/LoginPage');
 
 const login = new LoginPage()
 
-Given('user has browsed to the login page', async () => {
+Given('admin has browsed to the login page', async () => {
   await login.navigateToLoginPage()
   await expect(page).toHaveURL(login.baseURL + 'login')
 });
 
-When('user logs in with username as {string} and password as {string}', async (username, password) => {
+When('admin logs in with username as {string} and password as {string}', async (username, password) => {
   await login.loginWithUsernameAndPassword(username,password)
 });
 
-Then('user should be navigated to homescreen', async function () {
+Then('admin should be navigated to homescreen', async function () {
   await expect(page).toHaveURL(login.baseURL + "files/");
 });
 
-Then('user should see {string} message', async function (expectedMessage) {
+Then('admin should see {string} message', async function (expectedMessage) {
   const errorMessage = await page.innerHTML(login.wrongCredentialsDivSelector)
   assert.equal(errorMessage, expectedMessage, `Expected message string "${expectedMessage}" but received message "${errorMessage}" from UI`)
 });
