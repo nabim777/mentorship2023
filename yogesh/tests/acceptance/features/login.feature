@@ -15,7 +15,6 @@ Scenario: user logs in with correct credentials
 Scenario Outline: user logs in with incorrect credentials
   When user logs in with username as "<username>" and password as "<password>"
   Then user should see "Wrong credentials" message
-
   Examples: 
     | username | password |
     | jankari  | admin    |

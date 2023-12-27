@@ -5,8 +5,8 @@ class LoginPage {
         this.loginButton = '//input[@type="submit"]'
         this.wrongCredentialsDivSelector = '//div[@class="wrong"]'
         this.baseURL = "http://localhost:8080/"
-
     }
+    
     async navigateToLoginPage() {
         await page.goto(this.baseURL + 'login')
     }

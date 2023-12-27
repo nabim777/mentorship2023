@@ -39,14 +39,9 @@ async function cleanUpTempFiles() {
         await deleteFile(filesToDelete[i])
     }
 }
-function swapFileOnRename(oldfileName, newfileName) {
-    const fileToSwapIndex = filesToDelete.findIndex((file) => file == oldfileName);
-    filesToDelete[fileToSwapIndex] = newfileName;
-}
 
 module.exports ={
     deleteFile,
     cleanUpTempFiles,
     filesToDelete,
-    swapFileOnRename
 }

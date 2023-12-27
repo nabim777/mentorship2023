@@ -28,6 +28,7 @@ Then('user should be able to see a folder named {string}', async function (folde
 
 Given('user has created a file named {string} with content {string}',async function (filename,content){
     await homepage.createFileWithContent(filename, content)
+    await expect(page.locator(util.format(homepage.fileSelector,filename))).toBeVisible()
 })
 
 When('user creates a new file named {string} with content {string}', async function (filename, content) {

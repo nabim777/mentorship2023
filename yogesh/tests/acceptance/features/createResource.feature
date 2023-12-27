@@ -7,15 +7,18 @@ Feature: Create a new resource
     Given user has logged in as "admin"
     And user has navigated to the homepage
 
+
   Scenario: Create a new folder
     When user creates a new folder named "myFolder"
     Then user should be able to see a folder named "myFolder"
 
-  Scenario: Create a new file
+
+  Scenario: Create a new file with content
     When user creates a new file named "myFile.txt" with content "Hello World"
     Then user should be able to see a file named "myFile.txt" with content "Hello World"
 
+
   Scenario: Rename a file
-    Given user has created a file named "oldfile.txt" with content "dfghj"
+    Given user has created a file named "oldfile.txt" with content "Hello World"
     When user renames a file "oldfile.txt" to "newfile.txt"
     Then user should be able to see file with "newfile.txt" name
