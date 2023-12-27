@@ -8,7 +8,6 @@ class HomePage {
         this.inputSelector =  ".ace_text-input"
         this.saveButtonSelector = "//button[@aria-label='Save']"
         this.closeButtonSelector = "//button[@aria-label='Close']"
-        // this.fileSelector = "//div[@aria-label='demo.txt']"
         this.fileSelector = "//div[@aria-label='%s']";
     }
     
