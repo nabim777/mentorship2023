@@ -8,6 +8,6 @@ Background:
 
 
 Scenario: user creates a file
-  And user has logged in with username "admin" and password "admin"
+  Given user has logged in with username "admin" and password "admin"
   When user creates a file "demo.txt" with content "hello World!!!"
   Then user should see the "demo.txt" file
