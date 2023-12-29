@@ -11,7 +11,8 @@ const { cleanUpTempFiles } = require('./testHelper/helper.js')
 setDefaultTimeout(60000);
 BeforeAll(async function () {
   global.browser = await chromium.launch({
-    headless: true,
+    headless: false,
+    slowMo:1000
   });
 });
 
