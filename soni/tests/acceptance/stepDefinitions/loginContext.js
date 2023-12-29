@@ -18,7 +18,7 @@ When('user logins with username {string} and password {string}', async function 
   await loginPage.logintoHomePage(username, password)
 });
 
-Then('user should be directed to the homepage', async function () {
+Then('user should be redirected to the homepage', async function () {
   await expect(page).toHaveURL(loginPage.homePageUrl)
 });
 

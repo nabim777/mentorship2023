@@ -10,7 +10,7 @@ Background:
 
 Scenario: login with valid username and valid password
   When user logins with username "admin" and password "admin"
-  Then user should be directed to the homepage
+  Then user should be redirected to the homepage
 
 
 Scenario Outline: login with invalid username and incorrect password
