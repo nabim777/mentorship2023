@@ -10,7 +10,4 @@ So I can manage users
     And creates user with following details
       | Username          | Soni     |
       | Password          | password |
-      | Scope             | filename |
-      | Language          | English  |
-      | Admin Permissions | yes      |
     Then admin should see "Soni" in Users table.
