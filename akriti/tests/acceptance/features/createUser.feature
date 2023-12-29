@@ -5,10 +5,9 @@ So that user can manage the file browser.
 
   Scenario: Create a new user
     Given the user has browsed to the login page
-    And user logs in with username "admin" and password "admin"
-    When the user  navigates to the Settings and selects the User Management page
-    And user enters on the following data:
-      | username | password | Scope | language | adminpermission |
-      | Akrity   | admin    |       | yes      |                 |
-    
-    Then user should be able to create a new user
+    And the user has logged in with username "admin" and password "admin" using webUI
+    And the user has navigated to the Settings and selected the User Management page
+    When user enters on the following data:
+      | username | test              |
+      | password | test              |
+    Then user should be able to see a new user with username "test"
