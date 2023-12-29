@@ -1,22 +1,34 @@
+class UserPage {
+  constructor() {
+    this.settingSelector = "//button[@title='Settings']";
+    this.userManagement = '//a[@href="/settings/users"]';
+    this.newButtonSelector = "//button[@class='button']";
+    this.usernameSelector = "//input[@id='username']";
+    this.passwordSelector = "//input[@id='password']";
+    this.scopeSelector = "//input[@id='scope']";
+    this.languageSelector = "//input[@id='language']";
+    this.adminPermissionSelector = "//input[@id='adminpermission']";
+    this.submitSelector = "//input[@type='submit']";
+    this.tableUserSelector ='//tr[last()]/td'
+  }
 
-class UserPage{
-    constructor(){
+  async userManagementSetting() {
+    await page.click(this.settingSelector);
+    await page.click(this.userManagement);
+  }
 
- this.settingSelector = "//button[@title='Settings']"
- this.userManagent= "//li[@class='active']"
- this.newButtonSelector= "//button[@class='button']"
- this.usernameSelector= "//input[@id='username']"
- this.passwordSelector= "//input[@id='password']"
- this.scopeSelector = "//input[@id='scope']"
-this.submitSelector =  "//input[@type='submit']"
- 
+  async userRegistration(dataTable) {
+    const userDetails = [];
+    for (const userData of dataTable.raw()) {
+      userDetails.push(userData[1]);
     }
-    async gotoSetting(){
-        await page.click(this.settingSelector)
-        await page.click(this.userManagent)
-        await page.click(this.newButtonSelector)
-        await page.fill(this.usernameSelector, this.passwordSelector, this.scopeSelector)
-        await page.click(this.submitSelector)
-    }
+    await page.click(this.newButtonSelector);
+    await page.fill(this.usernameSelector, userDetails[0]);
+    await page.fill(this.passwordSelector, userDetails[1]);
+
+    await page.click(this.submitSelector);
+    await page.click(this.userManagement);
+  }
 }
-module.exports = UserPage
+
+module.exports = UserPage;

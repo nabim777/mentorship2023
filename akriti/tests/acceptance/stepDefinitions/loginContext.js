@@ -2,7 +2,6 @@ const { Given, When, Then } = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test")
 const assert = require("assert")
 const LoginPage = require("../PageObjects/LoginPage.js")
-
 const loginPage = new LoginPage;
 
 Given('the user has browsed to the login page', async function () {
