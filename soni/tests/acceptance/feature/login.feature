@@ -5,7 +5,7 @@ So I can access my profile
 
 
 Background:
- Given the user has browsed to the login page
+ Given the admin has browsed to the login page
 
 
 Scenario: login with valid username and valid password
