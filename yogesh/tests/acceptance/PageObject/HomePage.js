@@ -9,7 +9,7 @@ class HomePage{
         this.contentEditorSelector = '//textarea[@class="ace_text-input"]'
         this.editorContent = '//div[@class="ace_line"]'
         this.buttonSelector =`//button[@title="%s"]`
-        this.fileSelector =  `//div[@role="button" and  @aria-label="%s"]`
+        this.fileSelector =  `//div[@aria-label="%s"]`
         this.cardActionSelector = '//div[@class="card-action"]/button[@title="%s"]'
     }
 
