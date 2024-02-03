@@ -1,0 +1,86 @@
+ #when user create a new users( jun kura test garney),
+# aru Given test
+#donot include the multiple data in data tables like admin tables
+
+# notes about the github actions tools
+
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo code
+        uses: actions/checkout@v3
+
+      - name: set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: set up go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+
+      - name: set up the file application
+        run: |
+          git clone https://github.com/Grisha596/filebrowser.git
+          cd filebrowser/frontend
+          npm install
+          npm run build
+          cd ..
+          go mod download
+          go run main.go &
+
+      - name: wait file browser
+        run: |
+          sudo apt-get install wait-for-it -y
+          wait-for-it -h localhost -p 8080 -t 10
+
+      - name: install dependencies
+        run: |
+          npm install
+
+      - name: run web-ui tests
+        run: |
+          npx playwright install
+          npm run test:e2e **/tests
+
+# GitHub Actions workflow defined here named "Main Workflow." This workflow is triggered on pushes and pull requests to the master branch. Here's a breakdown of what this workflow does:
+# Checkout repo code:
+
+
+# Uses the actions/checkout action to fetch the repository's codebase.
+# Set up Node.js:
+
+# Uses the actions/setup-node action to set up Node.js version 16.x.
+# Set up Go programming language:
+
+# Uses the actions/setup-go action to set up Go version 1.20.
+# Set up the file application:
+
+# Clones the filebrowser repository from GitHub.
+# Navigates to the filebrowser/frontend directory.
+# Installs npm dependencies and builds the frontend.
+# Goes back to the root directory and downloads Go modules.
+# Runs the main Go application (main.go).
+# Wait for file browser:
+
+# Installs the wait-for-it utility via apt-get.
+# Waits for the file browser application to be available at localhost:8080 for a maximum of 10 seconds.
+# Install dependencies:
+
+# Installs npm dependencies again.
+# Run web UI tests:
+
+# Installs Playwright using npx playwright install.
+# Runs end-to-end tests located in the tests directory using npm run test:e2e.
