@@ -25,11 +25,11 @@ class HomePage {
     }
 
     async renameFile(oldFileName, newFileName){
-        swapFileOnRename(oldFileName, newFileName);
         await page.click(util.format(this.fileNameSelector, oldFileName))
         await page.click(this.renameIconSelector)
         await page.fill(this.textButtonSelector, newFileName)
         await page.click(this.renameButtonSelector)
+        swapFileOnRename(oldFileName, newFileName);
 }
 
 }

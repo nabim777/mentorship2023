@@ -16,6 +16,11 @@ async function getXauthToken() {
 
 const filesToDelete = []
 
+async function swapFileOnRename(oldFileName, newFileName){
+    filesToDelete[filesToDelete.indexOf(oldFileName)] = newFileName
+    return
+}
+
 async function deleteFile(filename) {
     try {
         const res = await axios.delete(`http://localhost:8080/api/resources/${filename}`, {
@@ -58,5 +63,6 @@ module.exports = {
     deleteFile,
     cleanUpTempFiles,
     filesToDelete,
-    createFile
+    createFile,
+    swapFileOnRename
 }
