@@ -48,33 +48,3 @@ jobs:
         run: |
           npx playwright install
           npm run test:e2e **/tests
-
-# GitHub Actions workflow defined here named "Main Workflow." This workflow is triggered on pushes and pull requests to the master branch. Here's a breakdown of what this workflow does:
-# Checkout repo code:
-
-
-# Uses the actions/checkout action to fetch the repository's codebase.
-# Set up Node.js:
-
-# Uses the actions/setup-node action to set up Node.js version 16.x.
-# Set up Go programming language:
-
-# Uses the actions/setup-go action to set up Go version 1.20.
-# Set up the file application:
-
-# Clones the filebrowser repository from GitHub.
-# Navigates to the filebrowser/frontend directory.
-# Installs npm dependencies and builds the frontend.
-# Goes back to the root directory and downloads Go modules.
-# Runs the main Go application (main.go).
-# Wait for file browser:
-
-# Installs the wait-for-it utility via apt-get.
-# Waits for the file browser application to be available at localhost:8080 for a maximum of 10 seconds.
-# Install dependencies:
-
-# Installs npm dependencies again.
-# Run web UI tests:
-
-# Installs Playwright using npx playwright install.
-# Runs end-to-end tests located in the tests directory using npm run test:e2e.

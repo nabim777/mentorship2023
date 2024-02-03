@@ -9,7 +9,8 @@ class UserPage {
     this.languageSelector = "//input[@id='language']";
     this.adminPermissionSelector = "//input[@id='adminpermission']";
     this.submitSelector = "//input[@type='submit']";
-    this.tableUserSelector ='//tr[last()]/td'
+    this.tableUserSelector ='//td[contains(text(),"%s")]'
+    this.userManagementPageUrl = 'http://localhost:8080/settings/users'
   }
 
   async userManagementSetting() {
