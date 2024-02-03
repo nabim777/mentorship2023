@@ -17,6 +17,7 @@ class HomePage{
         await page.click( util.format(this.buttonSelector,'New folder'))
         await page.fill(this.dialogInputSelector, folderName)
         await page.click(util.format(this.cardActionSelector,'Create'))
+        filesToDelete.push(folderName)
     }
 
     async createFileWithContent(filename, content){

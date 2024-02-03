@@ -5,7 +5,7 @@ Feature: create user
 
 
   Scenario: admin creates a new user
-    Given the admin has browsed to the login page
+    Given the admin has navigated to the login page
     And the admin has logged in with username "admin" and password "admin" using webUI
     And the admin has been redirected to the settings page
     And the admin has been redirected to the user management page

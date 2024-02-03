@@ -4,7 +4,7 @@ Feature: login
  So that I can have access to my files
 
   Background: 
-    Given the admin has browsed to the login page
+    Given the admin has navigated to the login page
 
 
   Scenario: admin logs in with valid username and valid password
@@ -14,7 +14,7 @@ Feature: login
 
   Scenario Outline: admin logs in with invalid username and incorrect password
     When admin logs in with username "<username>" and password "<password>" using webUI
-    Then admin should see "Wrong credentials" message
+    Then admin should get "Wrong credentials" message
     Examples: 
       | username | password |
       | grishma  | rijal    |
